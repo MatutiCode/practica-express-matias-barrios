@@ -1,0 +1,25 @@
+{
+  "name": "practrica-express-matias-barrios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatutiCode/practica-express-matias-barrios.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MatutiCode/practica-express-matias-barrios/issues"
+  },
+  "homepage": "https://github.com/MatutiCode/practica-express-matias-barrios#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
