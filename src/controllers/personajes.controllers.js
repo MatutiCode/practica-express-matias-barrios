@@ -18,3 +18,24 @@ export const getPersonajeById = (req, res) => {
   }
   res.status(200).json(personajes);
 };
+
+export const createPeronsaje = (req, res) => {
+  const { nombre, imagen } = req.body;
+
+  if (!nombre || nombre.trim() === "") {
+    return res.status(400).json({ error: "El campo nombre es obligatorio" });
+  }
+  if (!imagen || imgaen.trim() === "") {
+    return res.status(400).json({ error: "El campo imagen es obligatorio" });
+  }
+
+  const nuevoID = Math.max(...personajes.map((p) => p.id)) + 1;
+
+  const nuevoPersonaje = {
+    id: nuevoId,
+    nombre: nombre.trim(),
+    imagen: imagen.trim,
+  };
+  personajes.push(nuevoPersonaje);
+  res.status(201).json(nuevoPersonaje);
+};
