@@ -39,3 +39,34 @@ export const createPeronsaje = (req, res) => {
   personajes.push(nuevoPersonaje);
   res.status(201).json(nuevoPersonaje);
 };
+
+export const updatePersonaje = (req, res) => {
+  const id = Number(req.params.id);
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "El id debe ser un numero valido" });
+  }
+
+  const body = req.body;
+
+  if (!body || Object.keys(body).lenght === 0) {
+    return res.status(400).json({ error: "El body no puede estar vacio" });
+  }
+
+  for (const [campo, valor] of Object.entries(body)) {
+    if (typeof valor === "string" && valor.trim() === "") {
+      return res
+        .status(400)
+        .json({ error: `El campo "${campo}" no puede estar vacio` });
+    }
+  }
+
+  const index = personajes.findIndex((p) => p.id === id);
+  if (index === 1) {
+    return res
+      .status(400)
+      .json({ error: `No se encontro el personaje con el ID ${id}` });
+  }
+
+  personajes[index] = { ...personajes[index], ...body };
+  res.status(200).json(personajes[index]);
+};
