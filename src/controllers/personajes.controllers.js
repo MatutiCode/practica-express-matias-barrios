@@ -70,3 +70,24 @@ export const updatePersonaje = (req, res) => {
   personajes[index] = { ...personajes[index], ...body };
   res.status(200).json(personajes[index]);
 };
+
+export const deletePersonaje = (req, res) => {
+  const id = Number(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "El ID debe ser un numero valido" });
+  }
+
+  const index = personajes.findIndex((p) => p.id === id);
+
+  if (index === -1) {
+    return res
+      .status(400)
+      .json({ error: `No se encontro el personaje con ID ${id}` });
+  }
+
+  personajes.splice(index, 1);
+  res
+    .status(200)
+    .json({ mensaje: `personaje con ID ${id} eliminado correctamente` });
+};
